@@ -4,8 +4,14 @@
   "description": "api",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"localhost"
   },
   "author": "Brian Sutachan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "morgan": "^1.9.0"
+  }
 }
