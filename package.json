@@ -1,17 +1,18 @@
 {
   "name": "api-node",
   "version": "1.0.0",
-  "description": "api",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"localhost"
-  },
-  "author": "Brian Sutachan",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
     "lodash": "^4.17.10",
+    "nodemon": "^1.18.3",
     "morgan": "^1.9.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brian Sutachan",
+  "license": "ISC"
 }
