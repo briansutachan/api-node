@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var _ = require('lodash');
 const port = 3050;
-const host = '173.109.109.66';
+const host = '127.0.0.1';
 
 app.use(express.static('client'));
 app.use(express.urlencoded({ extended: true }));
@@ -57,12 +57,24 @@ app.put('/lions/:id', (req, res) => {
     if (!lions[lion]) {
         res.send();
     }else{
-        var updateLion = Object.assign(lions[lion], update);
-        res.json(\)
+        var updatedLion = Object.assign(lions[lion], update);
+        //_.assign(lions[lion], update);
+        res.json(updatedLion)
     }
+    console.log(lion);
+});
 
+app.delete("/lions/:id", (req, res) => {
+    var lion = lions.findIndex(lion => lion.id == req.params.id);
+    if(!lions[lion]) {
+        res.send();
+    } else {
+        var deletedLion = lions[lion];
+        lions.splice(lion, 1);
+        res,json(deletedLion);
+    }
 });
 
 app.listen(port, host, function () {
-    console.log('Listening on http://localhost:', port);
+    console.log("Listening on http://localhost:", port);
 })
