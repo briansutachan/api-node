@@ -5,24 +5,24 @@ const port = 3050;
 const host = '173.109.109.66';
 
 app.use(express.static('client'));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 var lions = [
     {
-    id : 1,
-    name : 'Simba',
-    pride : 'The cool cats',
-    age : 3,
-    gender : 'male'
-},
-{
-    id : 2,
-    name : 'Mufasa',
-    pride : 'The cool cats',
-    age : 4,
-    gender : 'male' 
-}];
+        id: 1,
+        name: 'Simba',
+        pride: 'The cool cats',
+        age: 3,
+        gender: 'male'
+    },
+    {
+        id: 2,
+        name: 'Mufasa',
+        pride: 'The cool csats',
+        age: 4,
+        gender: 'male'
+    }];
 var id = 0;
 
 app.get('/lions', (req, res) => {
@@ -45,6 +45,22 @@ app.post('/lions', (req, res) => {
     lions.push(lion);
 
     res.json(lion)
+});
+
+app.put('/lions/:id', (req, res) => {
+    var update = req.body;
+    if (update.id) {
+        delete update.id;
+    }
+
+    var lion = lions.findIndex(lion => lion.id == req.params.id);
+    if (!lions[lion]) {
+        res.send();
+    }else{
+        var updateLion = Object.assign(lions[lion], update);
+        res.json(\)
+    }
+
 });
 
 app.listen(port, host, function () {
