@@ -5,6 +5,7 @@
     'id' : id,
     'name' : name,
     'pride' : pride,
+    'trim' : trim,
     'age' : age,
     'gender' : gender
 }
