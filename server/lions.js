@@ -1,4 +1,4 @@
-var lionRouter = require('express').Router();
+var lionRouter = require("express").Router();
 
 var lions = [
     {
@@ -25,12 +25,13 @@ var updateId = function (req, res, next) {
     }
 
     next();
-}
+};
 
 lionRouter.param('id', (req, res, next, id) => {
     var lion = lions.find(lion => {
-        return lion.id == id;
+        return lion.id == req.params.id;
     });
+
     if (lion) {
         req.lion = lion;
         next();
@@ -39,17 +40,17 @@ lionRouter.param('id', (req, res, next, id) => {
     }
 });
 
-lionRouter.get('/', (req, res) => {
+lionRouter.get('/', (req, res) => { //GET lions
     res.json(lions);
 });
 
-lionRouter.get('/:id', (req, res) => {
+lionRouter.get('/:id', (req, res) => { //  GET lion.id
+    
     var lion = req.lion;
-
     res.json(lion || {});
 });
 
-lionRouter.post('/', updateId, (req, res) => {
+lionRouter.post('/', updateId, (req, res) => { //POST lion.id
     var lion = req.body;
 
     lions.push(lion);
@@ -57,9 +58,12 @@ lionRouter.post('/', updateId, (req, res) => {
     res.json(lion)
 });
 
+function findLionIndex (id) {
+    //findIndex stuff
+    return lionIndex;
+}
 
-
-lionRouter.put('/:id', (req, res) => {
+lionRouter.put('/:id', (req, res) => { // PUT/REPLACE lion.id
     var update = req.body;
     if (update.id) {
         delete update.id;
@@ -76,7 +80,7 @@ lionRouter.put('/:id', (req, res) => {
     console.log(lion);
 });
 
-lionRouter.delete("/:id", (req, res) => {
+lionRouter.delete("/:id", (req, res) => { // DELETE lion.id
     var lion = lions.findIndex(lion => lion.id == req.params.id);
     if (!lions[lion]) {
         res.send();
